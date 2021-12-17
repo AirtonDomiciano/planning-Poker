@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <title><%= __('title') %> | inovex GmbH</title> -->
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<script type="text/javascript" src="js/jquery/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="js/string-functions.js"></script>
+	<script type="text/javascript" src="js/jquery/modules/jquery.login.js"></script>
+	<script type="text/javascript" src="js/jquery/modules/jquery.logout.js"></script>
+	<script type="text/javascript" src="js/jquery/modules/jquery.cardselection.js"></script>
+	<script type="text/javascript" src="js/jquery/modules/jquery.chat.js"></script>
+	<script type="text/javascript" src="js/jquery/modules/jquery.scrumMaster.js"></script>
+	<script type="text/javascript" src="js/jquery/modules/jquery.productOwner.js"></script>
+	<script type="text/javascript" src="js/jquery/modules/jquery.userlist.js"></script>
+	<script type="text/javascript" src="js/jquery/modules/jquery.userstory.js"></script>
+	<script type="text/javascript" src="js/jquery/modules/jquery.carddisplay.js"></script>
+	<script type="text/javascript" src="js/jquery/modules/jquery.WebSocket.js"></script>
+	<base href="<%= web.protocol %>://<%= web.address %>:<%= web.port %>"></base>
+</head>
+
+<body>
+	<div class="poker-overlay" id="poker-notification">
+		<div class="poker-message">
+			<p class="poker-top" id="poker-notification-title"></p>
+			<p id="poker-notification-text"><img src="img/ajax-loader.gif" /></p>
+		</div>
+	</div>
+	<div class="poker-overlay" id="poker-login">
+		<div class="poker-message">
+			<div class="poker-top"><%= __('login-title') %></div>
+				<div class="poker-content">
+				<form action="/login" method="post" id="poker-login-form">
+					<p class="poker-login-user">
+						<label><%= __('login-role') %></label>
+						<select name="role">
+							<option value="developer"><%= __('role-dev') %></option>
+							<option value="productOwner"><%= __('role-productOwner') %></option>
+							<option value="scrumMaster"><%= __('role-scrumMaster') %></option>
+							<option value="spectator"><%= __('role-spectator') %></option>
+						</select>
+					</p>
+
+					<p class="poker-login-user">
+						<label><%= __('login-name') %></label>
+						<input type="text" name="name" />
+					</p>
+
+					<p class="poker-login-user">
+						<input type="submit" value="<%= __('login-button') %>" class="poker-login-submit" disabled="disabled" />
+					</p>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="poker-main">
+		<div class="poker-top">&nbsp;</div>
+
+		<div class="poker-content">
+			<h1><%= __('title') %></h1>
+			<div class="poker-chat">
+				<div class="poker-chat-tray">
+					<img src="img/icon/comments.png" alt="Chat" class="poker-chat-nonew" />
+					<img src="img/icon/comments_add.png" alt="Chat" class="poker-chat-new" />
+					<span><%= __('room-chat') %></span>
+				</div>
+				<div class="poker-chat-messages-container">
+					<div class="poker-chat-messages"></div>
+					<form class="poker-chat-messages-new">
+						<input type="text" name="new-chat-message" />
+						<img src="img/icon/add.png" alt="Go" />
+					</form>
+				</div>
+			</div>
+			<div class="poker-users">
+				<p><%= __('room-present') %>:</p>
+				<p class="poker-users-online">
+				</p>
+			</div>
+
+			<div class="poker-separator">&nbsp;</div>
+
+			<div class="poker-userstory">
+				<p><%= __('userstory-current') %>:</p>
+				<div class="poker-userstory-text-container">
+					<p id="poker-userstory-text"></p>
+					<p class="poker-userstory-edit scrum-product-owner">
+						<button id="poker-userstory-edit-button" disabled="disabled"><img src="img/icon/page_edit.png" alt="" /> <%= __('userstory-edit') %></button>
+					</p>
+				</div>
+			</div>
+
+			<div class="poker-separator">&nbsp;</div>
+			<div class="poker-felt"></div>
+			<div class="poker-felt-copyright">
+				<a target="_blank">Xpert &copy;</a>
+			</div>
+			<div class="poker-separator">&nbsp;</div>
+			<div class="poker-userinfo">
+				<%= __('room-youare') %>: <span class="poker-userinfo-name"></span> (<span class="poker-userinfo-role"></span>)
+				<img src="img/icon/door_out.png" alt="Ausloggen" title="Ausloggen" class="poker-logout" />
+			</div>
+			<div class="poker-cards scrum-developer">
+				<% for (var card in cards) { %>
+					<a class="poker-card"><%= cards[card] %></a>
+				<% } %>
+			</div>
+			<div class="poker-cards-show scrum-master">
+				<button id="poker-room-reset"><img src="img/icon/page_delete.png" alt=""> <%= __('room-reset') %></button>
+				<button id="poker-cards-reset-button"><img src="img/icon/page_refresh.png" alt="" /> <%= __('cards-reset') %></button>
+				<button id="poker-cards-show-button"><img src="img/icon/pictures.png" alt="" /> <%= __('cards-show') %></button>
+			</div>
+			<form class="poker-userstory-form scrum-product-owner">
+				<textarea id="poker-userstory-textarea"></textarea>
+				<button id="poker-userstory-post" disabled="disabled"><img src="img/icon/page_go.png" alt="" /> <%= __('userstory-post') %></button>
+			</form>
+			<div class="poker-separator">&nbsp;</div>
+		</div>
+	</div>
+
+	<footer class="poker-footer">
+		<div class="poker-content">
+			<b>&copy; Xpert</b> 
+		</div>
+	</footer>
+	<script type="text/javascript">
+		var i18n = {
+			'room-reset-confirm': '<%= __("room-reset-confirm") %>',
+			'cards-reset-confirm': '<%= __("cards-reset-confirm") %>',
+			'connection-interrupted': '<%= __("connection-interrupted") %>',
+			'connection-reconnecting': '<%= __("connection-reconnecting") %>',
+			'connection-broken': '<%= __("connection-broken") %>'
+		};
+
+		var options = {
+			socket: {
+				address: '<%= web.address %>',
+				port: <%= web.port %>,
+				maxReconnects: 100
+			},
+			lsUserKey: 'user',
+			loaderBackgroundClass: 'poker-ajax-loader-background',
+			availableRoles: {
+				developer: '<%= __("role-dev") %>',
+				productOwner: '<%= __("role-productOwner") %>',
+				scrumMaster: '<%= __("role-scrumMaster") %>',
+				spectator: '<%= __("role-spectator") %>'
+			},
+			i18n: i18n
+		};
+	</script>
+	<script type="text/javascript" src="js/poker-client.js"></script>
+</body>
+
+</html>

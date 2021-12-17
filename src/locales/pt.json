@@ -1,0 +1,31 @@
+{
+	"title": "Planning Poker online",
+
+	"login-title": "Conecte-se",
+	"login-role": "Por favor, indique sua função",
+	"login-name": "Por favor, insira seu nome",
+	"login-button": "Conecte-se",
+
+	"role-dev": "desenvolvedor",
+	"role-productOwner": "Proprietário do produto",
+	"role-scrumMaster": "Scrum Master",
+	"role-spectator": "observador",
+
+	"room-chat": "Bate-papo",
+	"room-present": "No quarto",
+	"room-reset": "Reiniciar sala",
+	"room-reset-confirm": "Deseja realmente redefinir? Isso também exclui a história do usuário.",
+	"room-youare": "Você está logado como",
+
+	"cards-reset": "Campo de cartão vazio",
+	"cards-reset-confirm": "Deseja mesmo esvaziar o campo do cartão?",
+	"cards-show": "Revelar cartas",
+
+	"userstory-current": "História do usuário atual",
+	"userstory-edit": "Editar história de usuário",
+	"userstory-post": "Assumir a história do usuário",
+
+	"connection-interrupted": "conexão interrompida",
+	"connection-reconnecting": "Tente reconectar...",
+	"connection-broken": "Não foi possível reconectar. Por favor, tente novamente mais tarde."
+}
