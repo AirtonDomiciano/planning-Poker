@@ -14,7 +14,7 @@ var loginListener = $('#poker-login-form').login({
             show: []
         },
         scrumMaster: {
-            hide: ['.scrum-developer', '.scrum-product-owner'],
+            hide: ['.scrum-product-owner'],
             show: ['.scrum-master']
         },
         productOwner: {

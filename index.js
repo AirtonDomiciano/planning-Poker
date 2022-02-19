@@ -1,4 +1,6 @@
-var config = require('iniparser').parseSync('./config.ini'),
+// configuracao inicial
+const config = require('iniparser').parseSync('./config.ini'),
+
     // Poker App specific Variables and requires
     pokerConnection = require('./src/lib/poker-connection'),
     pokerBroadcaster = require('./src/lib/poker-broadcaster-server'),
@@ -6,6 +8,7 @@ var config = require('iniparser').parseSync('./config.ini'),
     pokerCards = require('./src/lib/poker-cards')
     pokerEventHandlers = require('./src/lib/poker-event-handlers'),
     pokerBroadcasts = require('./src/lib/poker-broadcasts'),
+    
     // HTTP Server
     http = require(config.http.protocol),
     server = require('./src/bootstrap/server');

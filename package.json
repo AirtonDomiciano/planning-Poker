@@ -24,7 +24,7 @@
     "i18n": "^0.13.3",
     "iniparser": "^1.0.5",
     "jasmine-node": "^3.0.0",
-    "nodemon": "^2.0.15",
+    "nodemon": "^1.18.10",
     "websocket": "^1.0.34"
   }
 }
