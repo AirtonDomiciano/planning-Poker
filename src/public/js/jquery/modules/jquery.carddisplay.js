@@ -39,7 +39,7 @@
 				card = $('<div id="' + pokerCardId + '" class="poker-card-display ' + cardsHiddenClass + '">' +
 					'<a class="poker-card poker-card-value">#</a>' +
 					'<a class="poker-card poker-card-back">' +
-						'<img src="img/inovex-logo.png" alt="" />' +
+						// '<img src="img/inovex-logo.png" alt="" />' +
 					'</a>' +
 					'<span class="poker-card-player">#</a>' +
 				'</div>');
