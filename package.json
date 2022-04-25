@@ -4,8 +4,8 @@
   "description": "Primeiro PlanningPoker",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "dev": "node index.js",
+    "debug": "nodemon --inspect index.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,6 @@
     "iniparser": "^1.0.5",
     "jasmine-node": "^3.0.0",
     "nodemon": "^1.18.10",
-    "websocket": "^1.0.34"
+    "websocket": "^1.0.34" 
   }
 }

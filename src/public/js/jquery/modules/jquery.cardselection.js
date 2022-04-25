@@ -19,6 +19,7 @@
 			selectedCard = $(event.target);
 			cardValue = selectedCard.html();
 			user = JSON.parse(localStorage.getItem(options.lsUserKey));
+			console.log('User:' + user.name, 'Card:' + cardValue)
 
 			socketData = {
 				type: 'play-card',

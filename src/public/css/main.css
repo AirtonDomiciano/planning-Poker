@@ -162,12 +162,11 @@ img {
 .poker-felt {
 	border-radius: 5px;
 	background-image: url('../img/fundo.jpg');
-	border-radius: 5px;
 	margin-bottom: 10px;
 	background-attachment: fixed;
     background-size: 100%;
     background-repeat: no-repeat;
-    background-color: blue;
+    /* background-color: blue; */
 	height: 500px;
 }
 
@@ -209,7 +208,7 @@ img {
 
 .poker-card {
 	display: block;
-	border: 2px solid#0099ff;
+	border: 2px solid #0099ff;
 	background-color: #fff;
 	border-radius: 5px;
 	float: left;

@@ -2,8 +2,7 @@ var pokerUsers = require('./poker-users'),
     pokerUser = require('./poker-user'),
     pokerCards = require('./poker-cards'),
     pokerBroadcaster = require('./poker-broadcaster-server'),
-    pokerUserstory = require('./poker-user-story'),
-    crypto = require('crypto');
+    pokerUserstory = require('./poker-user-story');
 
 module.exports = PokerEventHandlers = {};
 
@@ -58,6 +57,7 @@ PokerEventHandlers.getInitialDataListener = function(messageData) {
 PokerEventHandlers.playCardListener = function(messageData) {
     var cardSet = pokerCards.setCard(messageData.userId, messageData.cardValue);
     // If a new card could be set, broadcast
+    console.log('playCardListener',cardSet )
     if (cardSet) {
         broadcastCards();
     }

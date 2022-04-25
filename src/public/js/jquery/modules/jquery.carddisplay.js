@@ -1,4 +1,5 @@
 (function(jQuery, $) {
+	console.log($)
 	jQuery.fn.carddisplay = function(options) {
 		var me,
 			listeners;
@@ -33,13 +34,14 @@
 			cardsTotal++;
 
 			pokerCardId = 'poker-card-' + userId;
+			pokerCardInId = 'poker-card-in-' + userId;
 			card = $('#' + pokerCardId);
 
 			if (!card.is('div')) {
 				card = $('<div id="' + pokerCardId + '" class="poker-card-display ' + cardsHiddenClass + '">' +
-					'<a class="poker-card poker-card-value">#</a>' +
-					'<a class="poker-card poker-card-back">' +
-						// '<img src="img/inovex-logo.png" alt="" />' +
+					'<a id="' + pokerCardInId + '" class="poker-card poker-card-value">#</a>' +
+					'<a id="' + pokerCardInId + '" class="poker-card poker-card-back">' +
+						// '<img src="img/card-logo.png" alt="" />' +
 					'</a>' +
 					'<span class="poker-card-player">#</a>' +
 				'</div>');

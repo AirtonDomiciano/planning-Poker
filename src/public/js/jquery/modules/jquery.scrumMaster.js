@@ -50,12 +50,49 @@
 		});
 
 		listeners.on('show-cards', function(event, message) {
+			// poker-card
+			const felt = $('.poker-felt').find()
+			childrenFelt = felt.prevObject[0].children;
+
+			const arr = []
+			for (const felt of childrenFelt) {
+				const obj = {
+					value: +felt.children[0].innerHTML,
+					id: felt.children[0].id,
+					name: felt.innerText,
+					idFelt: felt.id,
+				}
+			if (!arr[obj.value]?.length > 0) {
+				arr[obj.value] = []
+			}
+			  arr[obj.value][arr[obj.value].length] = obj
+			}
+
+			console.log(arr)
+
+			var max = arr.reduce(function(a, b) {
+				return Math.max(a, b.length);
+			}, -Infinity);
+
+			const arrMax = arr.filter((el) => el.length === max)
+
+			console.log(arrMax)
+			if (arrMax.length  === 1) {
+				const arrColor = arrMax[0]
+				for (const obj of arrColor) {
+					$(`#${obj.id}`).css("background-color", "#7CFC00");
+				}
+
+			}
+
+			console.log('FIM')
+
 			$('.' + options.showCardsSelectorClass).removeClass(options.showCardsToggleClass);
 			$(options.pokerCardsShowButton).attr('disabled', 'disabled');
 		});
-
+		
 		return listeners;
-	};	
+	};
 
 	jQuery.fn.scrumMaster.options = {
 		pokerCardsShowButton: null,
